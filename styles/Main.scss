@@ -1,0 +1,18 @@
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@import "./_App.scss";
+
+@import "./_About.scss";
+@import "./_Contact.scss";
+@import "./_Footer.scss";
+@import "./_Header.scss";
+@import "./_Hero.scss";
+@import "./_Nav.scss";
+@import "./_Stars.scss";
+@import "./_Technologies.scss";
+
+@import "./_Markdown.scss";

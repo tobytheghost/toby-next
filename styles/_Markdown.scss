@@ -1,0 +1,91 @@
+@import "./colors.scss";
+
+.markdown-body {
+  width: 100%;
+  * {
+    line-height: 1.5rem;
+  }
+  pre {
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    * {
+      line-height: 1.25rem;
+      font-family: monospace;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+  h5,
+  h6 {
+    font-size: 1rem;
+  }
+  hr {
+    margin-bottom: 1rem;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  blockquote {
+    border-left: 0.5rem solid #121212;
+    padding-left: 1rem;
+    background: #eee;
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    > p:last-child {
+      margin-bottom: unset;
+    }
+  }
+  > blockquote {
+    margin-bottom: 1rem;
+  }
+  ul {
+    list-style: initial;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+  }
+  > ul {
+    margin-bottom: 1rem;
+  }
+  ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+  code {
+    color: $orange;
+    background: #121212;
+    padding: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    line-height: 1rem;
+  }
+  strong {
+    font-weight: 600;
+  }
+  em {
+    font-style: italic;
+  }
+}

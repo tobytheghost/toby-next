@@ -1,0 +1,9 @@
+.header {
+  height: 100px;
+  &--home {
+    height: unset;
+    .nav__title {
+      color: #fff;
+    }
+  }
+}

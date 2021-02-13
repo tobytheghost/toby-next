@@ -1,0 +1,38 @@
+@import "./_colors.scss";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background: #121212;
+  color: #fff;
+  &__copy {
+    text-align: center;
+  }
+  &__items {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  &__item {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    background: $orange;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    a {
+      color: #fff;
+      line-height: 1;
+      padding: 1rem;
+      &:hover {
+        color: #fff;
+      }
+    }
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
