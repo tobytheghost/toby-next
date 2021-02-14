@@ -19,7 +19,7 @@ author: Toby Gates
   is a production-ready animation and motion library for React.
 </p>
 
-Using it's simple devarative syntax it allows you to add powerful animations while also keeping your codebase easy to read and maintain.
+Using it's simple devarative syntax we can add powerful animations while also keeping the codebase easy to read and maintain.
 
 In the following article we'll look at how you can use Framer Motion to animate a component.
 
@@ -95,7 +95,7 @@ export const Demo1 = () => {
 
 Now we will look at how we can use **Framer Motion** to animate the list.
 
-First we need to import `motion` from Framer Motion.
+First we need to import `motion` from the Framer Motion package.
 
 ```js
 import { motion } from "framer-motion";
@@ -103,9 +103,9 @@ import { motion } from "framer-motion";
 
 **Motion** components are the core of the Motion API. There's a **motion** component for every HTML and SVG element.
 
-They work exactly the same, but with additional props to allow you to add animations.
+They work exactly the same as regular HTML and SVG elements, but with additional props to add animations.
 
-Here is an example of a motion div component:
+Here's an example of a motion div component:
 
 ```html
 <motion.div>Lorem ipsum</motion.div>
@@ -225,7 +225,11 @@ export const Demo3 = () => {
 
 While mapping over the items array we have already set the index as `i`. We can make use of this to add a delay with an offset related to the index for each of the items by using the `custom` prop.
 
-To make use of the `custom` value, we can convert any of the variants (in this case `show`) to be a function.
+To make use of the `custom` value, we can convert any of the variants (in this case `show`) to be an arrow function.
+
+We can then pass in `i` as an argument of the function.
+
+Now that `i` is available to use we can set the transition to be `delay: i * 0.1` so that each item will appear 0.1 seconds after the previous one.
 
 **Code:**
 
@@ -299,6 +303,8 @@ export const Demo4 = () => {
 > <Demo4 />
 
 Now when the list is loaded, each item loads in slightly delayed from the previous one.
+
+The full code used in this demo is below so you can try it out for yourself:
 
 ```js
 import React, { useState } from "react";
