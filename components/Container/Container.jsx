@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const Container = ({ children }) => {
+const Container = ({ children, frontMatter }) => {
   const router = useRouter();
 
   const headerType = router.pathname === "/" ? "home" : "page";

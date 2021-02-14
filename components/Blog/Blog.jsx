@@ -89,7 +89,7 @@ const Blog = () => {
         initial="hidden"
         animate="show"
       >
-        Blog
+        Web Development Blog
       </motion.h1>
       <div className="posts">{posts}</div>
     </>

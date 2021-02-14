@@ -1,10 +1,10 @@
 import { MDXProvider } from "@mdx-js/react";
-import VisibilitySensor from "react-visibility-sensor";
 import { motion, AnimatePresence } from "framer-motion";
 
 import CodeBlock from "../components/CodeBlock/CodeBlock";
 import Progress from "../components/Progress/Progress";
 import { formatDate } from "../utils/helpers";
+import Meta from "../components/Meta/Meta";
 
 const components = {
   pre: (props) => <div {...props} />,
@@ -13,8 +13,10 @@ const components = {
 
 const Post = ({ children, frontMatter }) => {
   const { title, topImage, author, date } = frontMatter;
+  console.log(frontMatter);
   return (
     <>
+      <Meta meta={frontMatter} />
       <Progress />
       <section className="section section--no-padding-top">
         <article className="section__container">

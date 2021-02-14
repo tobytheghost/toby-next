@@ -179,7 +179,9 @@ progress[value]::-webkit-progress-bar {
   }
   &__icons {
     svg {
-      margin-right: 0.5rem;
+      // margin-right: 0.5rem;
+      max-width: 4rem;
+      max-height: 4rem;
     }
   }
   &__alert {

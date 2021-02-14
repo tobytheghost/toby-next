@@ -70,7 +70,7 @@ function Contact() {
       <VisibilitySensor partialVisibility onChange={handleOnChange}>
         {() => (
           <div className="section__container">
-            <motion.h2
+            <motion.h1
               className="section__title contact__title"
               variants={{
                 hidden: {
@@ -89,7 +89,7 @@ function Contact() {
               animate={entered ? "show" : "hidden"}
             >
               Contact
-            </motion.h2>
+            </motion.h1>
 
             <div className="section__row section__row--align-top">
               {/* <div className="section__column">
