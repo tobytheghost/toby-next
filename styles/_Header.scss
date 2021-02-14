@@ -1,5 +1,8 @@
 .header {
-  height: 100px;
+  height: 70px;
+  @media (min-width: 1025px) {
+    height: 100px;
+  }
   &--home {
     height: unset;
     .nav__title {

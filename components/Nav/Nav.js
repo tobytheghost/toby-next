@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link as ScrollLink, Events } from "react-scroll";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import FacebookIcon from "@material-ui/icons/Facebook";
 
 function Nav() {
   const [menuActive, setMenuActive] = useState(false);
@@ -66,6 +69,41 @@ function Nav() {
                 Contact
               </a>
             </Link>
+          </li>
+
+          <li className="nav__item">
+            <ul className="social">
+              <li className="social__item">
+                <a
+                  href="https://www.linkedin.com/in/tobygates/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link"
+                >
+                  <LinkedInIcon />
+                </a>
+              </li>
+              <li className="social__item">
+                <a
+                  href="https://github.com/tobytheghost/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link"
+                >
+                  <GitHubIcon />
+                </a>
+              </li>
+              <li className="social__item">
+                <a
+                  href="https://www.facebook.com/tobytheghost"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link"
+                >
+                  <FacebookIcon />
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

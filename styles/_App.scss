@@ -223,7 +223,13 @@ progress[value]::-webkit-progress-bar {
 
 .posts {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   column-gap: 1rem;
   row-gap: 1rem;
   width: 100%;
@@ -247,5 +253,34 @@ progress[value]::-webkit-progress-bar {
   &__about {
     display: block;
     padding-bottom: 1rem;
+  }
+}
+
+.card {
+  &__title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.social {
+  &__item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: inline-block;
+    svg {
+      font-size: 1.75rem;
+    }
+    a {
+      font-size: 1rem;
+      display: block;
+    }
+  }
+  &__item:first-child {
+    margin-left: unset;
+  }
+  &__item:last-child {
+    margin-right: unset;
   }
 }

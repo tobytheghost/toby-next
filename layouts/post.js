@@ -1,4 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
+import VisibilitySensor from "react-visibility-sensor";
+import { motion, AnimatePresence } from "framer-motion";
 
 import CodeBlock from "../components/CodeBlock/CodeBlock";
 import Progress from "../components/Progress/Progress";
@@ -9,27 +11,97 @@ const components = {
   code: (props) => <CodeBlock {...props} />,
 };
 
-export default function Post({ children, frontMatter }) {
+const Post = ({ children, frontMatter }) => {
   const { title, topImage, author, date } = frontMatter;
   return (
     <>
       <Progress />
       <section className="section section--no-padding-top">
         <article className="section__container">
-          <img
+          <motion.img
             className="section__image"
             src={topImage || "https://picsum.photos/1200/300"}
             alt={title}
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: -100,
+              },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.3,
+                },
+              },
+            }}
+            initial="hidden"
+            animate="show"
           />
-          <h1 className="section__title section__title--blog">{title}</h1>
-          <div className="section__byline">
+          <motion.h1
+            className="section__title section__title--blog"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: -100,
+              },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.45,
+                },
+              },
+            }}
+            initial="hidden"
+            animate="show"
+          >
+            {title}
+          </motion.h1>
+          <motion.div
+            className="section__byline"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: -100,
+              },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.45,
+                },
+              },
+            }}
+            initial="hidden"
+            animate="show"
+          >
             By <strong>{author}</strong> - {formatDate(date)}
-          </div>
-          <div className="markdown-body">
+          </motion.div>
+          <motion.div
+            className="markdown-body"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: -100,
+              },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.6,
+                },
+              },
+            }}
+            initial="hidden"
+            animate="show"
+          >
             <MDXProvider components={components}>{children}</MDXProvider>
-          </div>
+          </motion.div>
         </article>
       </section>
     </>
   );
-}
+};
+
+export default Post;

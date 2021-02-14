@@ -64,11 +64,13 @@
   }
   &__icon {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
     z-index: 99;
     @media (min-width: 1025px) {
       display: none;
+      top: 2rem;
+      right: 2rem;
     }
     button {
       position: relative;
@@ -116,10 +118,14 @@
     font-weight: 600;
     color: #121212;
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 1rem;
+    left: 1rem;
     z-index: 99;
     line-height: 40px;
+    @media (min-width: 1025px) {
+      top: 2rem;
+      left: 2rem;
+    }
   }
   &--active {
     #{ $self }__icon {
