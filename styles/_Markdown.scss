@@ -12,6 +12,7 @@
     * {
       line-height: 1.25rem;
       font-family: monospace;
+      box-sizing: border-box;
     }
   }
   h1,
@@ -100,6 +101,8 @@
     padding-bottom: 0.1rem;
     line-height: 1rem;
     overflow-y: auto;
+    font-size: 1.2rem;
+    font-family: monospace;
   }
   strong {
     font-weight: 600;

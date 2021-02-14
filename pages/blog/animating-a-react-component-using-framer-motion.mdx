@@ -129,40 +129,17 @@ Let's add a fade-in / bounce-in effect for each of the list items.
 **Code:**
 
 ```js
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-
-const List = () => {
-  const [items, setItems] = useState(["Item", "Item", "Item"]);
-
-  const handleOnClick = () => {
-    const newItems = [...items, "Item"];
-    setItems(newItems);
-  };
-
-  return (
-    <div className="list">
-      <button onClick={handleOnClick}>Add New Item</button>
-      <ul>
-        {items.map((item, i) => (
-          <motion.li
-            key={i}
-            initial="hide"
-            animate="show"
-            variants={{
-              hide: { opacity: 0, x: 100 },
-              show: { opacity: 1, x: 0 },
-            }}
-          >
-            {item}
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default List;
+<motion.li
+  key={i}
+  initial="hide"
+  animate="show"
+  variants={{
+    hide: { opacity: 0, x: 100 },
+    show: { opacity: 1, x: 0 },
+  }}
+>
+  {item}
+</motion.li>
 ```
 
 **Demo:**
@@ -269,6 +246,8 @@ To make use of the `custom` value, we can convert any of the variants (in this c
   }}
   custom={i}
 >
+  {item}
+</motion.li>
 ```
 
 **Demo:**
