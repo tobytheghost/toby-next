@@ -223,21 +223,23 @@ export const Demo3 = () => {
       ) : (
         <button onClick={loadItems}>Load Items</button>
       )}
-      <ul>
-        {items.map((item, i) => (
-          <motion.li
-            key={i}
-            initial="hide"
-            animate="show"
-            variants={{
-              hide: { opacity: 0, x: 100 },
-              show: { opacity: 1, x: 0 },
-            }}
-          >
-            {item}
-          </motion.li>
-        ))}
-      </ul>
+      {items.length !== 0 && (
+        <ul>
+          {items.map((item, i) => (
+            <motion.li
+              key={i}
+              initial="hide"
+              animate="show"
+              variants={{
+                hide: { opacity: 0, x: 100 },
+                show: { opacity: 1, x: 0 },
+              }}
+            >
+              {item}
+            </motion.li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
@@ -282,14 +284,14 @@ export const Demo4 = () => {
   };
   return (
     <div className="list">
-      {items.length ? (
+      {items.length !== 0 ? (
         <button onClick={clearItems}>Clear Items</button>
       ) : (
         <button onClick={loadItems}>Load Items</button>
       )}
-      <ul>
-        {items &&
-          items.map((item, i) => (
+      {items.length !== 0 && (
+        <ul>
+          {items.map((item, i) => (
             <motion.li
               key={i}
               initial="hide"
@@ -309,7 +311,8 @@ export const Demo4 = () => {
               {item}
             </motion.li>
           ))}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 };
@@ -336,14 +339,14 @@ const List = () => {
 
   return (
     <div className="list">
-      {items.length ? (
+      {items.length !== 0 ? (
         <button onClick={clearItems}>Clear Items</button>
       ) : (
         <button onClick={loadItems}>Load Items</button>
       )}
-      <ul>
-        {items &&
-          items.map((item, i) => (
+      {items.length !== 0 && (
+        <ul>
+          {items.map((item, i) => (
             <motion.li
               key={i}
               initial="hide"
@@ -363,7 +366,8 @@ const List = () => {
               {item}
             </motion.li>
           ))}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 };
