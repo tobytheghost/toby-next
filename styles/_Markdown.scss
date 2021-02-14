@@ -27,9 +27,17 @@
   h1,
   h2 {
     font-size: 1.5rem;
+    margin-top: 3rem;
+    &:first-child {
+      margin-top: unset;
+    }
   }
   h3 {
     font-size: 1.25rem;
+    margin-top: 2rem;
+    &:first-child {
+      margin-top: unset;
+    }
   }
   h4 {
     font-size: 1.1rem;
@@ -45,7 +53,7 @@
     margin-bottom: 1rem;
   }
   blockquote {
-    border-left: 0.5rem solid #121212;
+    border-left: 0.5rem solid $orange;
     padding-left: 1rem;
     background: #eee;
     border-radius: 0.5rem;
@@ -84,8 +92,8 @@
     margin-bottom: 0.5rem;
   }
   code {
-    color: $orange;
-    background: #121212;
+    color: #121212;
+    background: #eeeeee;
     padding: 0.5rem;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;

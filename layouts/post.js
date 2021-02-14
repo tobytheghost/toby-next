@@ -13,7 +13,7 @@ const components = {
 
 const Post = ({ children, frontMatter }) => {
   const { title, topImage, author, date } = frontMatter;
-  console.log(frontMatter);
+  // console.log(frontMatter);
   return (
     <>
       <Meta meta={frontMatter} />

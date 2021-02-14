@@ -1,0 +1,377 @@
+---
+layout: post
+title: Animating a React component using Framer Motion
+extract: Framer Motion is a production-ready animation and motion library for React. Using it's simple devarative syntax...
+description: Understanding the fundamentals of Framer Motion and creating a simple animated React component.
+image: https://picsum.photos/id/0/400/300
+topImage: https://picsum.photos/id/0/1200/300
+canonical: "https://tobygates.co.uk/blog/animating-a-react-component-using-framer-motion/"
+date: 2021-02-14
+author: Toby Gates
+---
+
+## Introduction
+
+<a href="https://www.framer.com/motion/" target="_blank">
+  Framer Motion
+</a> is a production-ready animation and motion library for React.
+
+Using it's simple devarative syntax it allows you to add powerful animations while also keeping your codebase easy to read and maintain.
+
+In the following article we'll look at how you can use Framer Motion to animate a component.
+
+## Adding Framer Motion to a project
+
+First things first we'll need to install `framer-motion` from npm.
+
+`npm install framer-motion`
+
+Once installed, Framer Motion can be imported into each of your components via `framer-motion`.
+
+## Setting up the basic component
+
+Here i've setup a basic **React component**. When the button is clicked a new item will be appended to the list.
+
+Let's look at how we can animate this so that each new item on the list animates into place rather than just appearing on the screen.
+
+**Code:**
+
+```js
+import React, { useState } from "react";
+
+const List = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+
+  const handleOnClick = () => {
+    const newItems = [...items, "Item"];
+    setItems(newItems);
+  };
+
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default List;
+```
+
+**Demo:**
+
+import { useState } from "react";
+
+export const Demo1 = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+  const handleOnClick = () => {
+    const newItems = [...items, "Item"];
+    setItems(newItems);
+  };
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+> <Demo1 />
+
+## Animating the component
+
+### Motion Components
+
+Now we will look at how we can use **Framer Motion** to animate the list.
+
+First we need to import `motion` from Framer Motion.
+
+```js
+import { motion } from "framer-motion";
+```
+
+**Motion** components are the core of the Motion API. There's a **motion** component for every HTML and SVG element.
+
+They work exactly the same, but with additional props to allow you to add animations.
+
+Here is an example of a motion div component:
+
+```html
+<motion.div>Lorem ipsum</motion.div>
+```
+
+**Motion** components are animated using the **animate** prop. This can accept an object, variant label(s), or a reference.
+
+```js
+const variants = {
+  hide: { opacity: 0, x: 100 },
+  show: { opacity: 1, x: 0 },
+};
+
+return <motion.div initial="hide" animate="show" variants={variants} />;
+```
+
+### Animating the list
+
+Let's add a fade-in / bounce-in effect for each of the list items.
+
+**Code:**
+
+```js
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+const List = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+
+  const handleOnClick = () => {
+    const newItems = [...items, "Item"];
+    setItems(newItems);
+  };
+
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <motion.li
+            key={i}
+            initial="hide"
+            animate="show"
+            variants={{
+              hide: { opacity: 0, x: 100 },
+              show: { opacity: 1, x: 0 },
+            }}
+          >
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default List;
+```
+
+**Demo:**
+
+import { motion } from "framer-motion";
+
+export const Demo2 = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+  const handleOnClick = () => {
+    const newItems = [...items, "Item"];
+    setItems(newItems);
+  };
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <motion.li
+            key={i}
+            initial="hide"
+            animate="show"
+            variants={{
+              hide: { opacity: 0, x: 100 },
+              show: { opacity: 1, x: 0 },
+            }}
+          >
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+> <Demo2 />
+
+### Dynamic Animations
+
+The above use case is great if you want to animate new objects on load, however in some cases you may want to animate the whole list at once.
+
+In the demo below you can see that each of the items load at the same time. Now let's look at how we can add a dynamic delay to each of the items.
+
+**Demo:**
+
+export const Demo3 = () => {
+  const initialItems = ["Item", "Item", "Item"];
+  const [items, setItems] = useState([]);
+  const loadItems = () => {
+    setItems(initialItems);
+  };
+  const clearItems = () => {
+    setItems([]);
+  };
+  return (
+    <div className="list">
+      {items.length ? (
+        <button onClick={clearItems}>Clear Items</button>
+      ) : (
+        <button onClick={loadItems}>Load Items</button>
+      )}
+      <ul>
+        {items.map((item, i) => (
+          <motion.li
+            key={i}
+            initial="hide"
+            animate="show"
+            variants={{
+              hide: { opacity: 0, x: 100 },
+              show: { opacity: 1, x: 0 },
+            }}
+          >
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+> <Demo3 />
+
+While mapping over the items array we have already set the index as `i`. We can make use of this to add a delay with an offset related to the index for each of the items by using the `custom` prop.
+
+To make use of the `custom` value, we can convert any of the variants (in this case `show`) to be a function.
+
+**Code:**
+
+```js
+<motion.li
+  key={i}
+  initial="hide"
+  animate="show"
+  variants={{
+    hide: { opacity: 0, x: 100 },
+    show: (i) => ({
+      opacity: 1,
+      x: 0
+      transition: {
+        delay: i * 0.1,
+      },
+    }),
+  }}
+  custom={i}
+>
+```
+
+**Demo:**
+
+export const Demo4 = () => {
+  const [items, setItems] = useState([]);
+  const initialItems = ["Item", "Item", "Item"];
+  const loadItems = () => {
+    setItems(initialItems);
+  };
+  const clearItems = () => {
+    setItems([]);
+  };
+  return (
+    <div className="list">
+      {items.length ? (
+        <button onClick={clearItems}>Clear Items</button>
+      ) : (
+        <button onClick={loadItems}>Load Items</button>
+      )}
+      <ul>
+        {items &&
+          items.map((item, i) => (
+            <motion.li
+              key={i}
+              initial="hide"
+              animate="show"
+              variants={{
+                hide: { opacity: 0, x: 100 },
+                show: (i) => ({
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    delay: i * 0.1,
+                  },
+                }),
+              }}
+              custom={i}
+            >
+              {item}
+            </motion.li>
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+> <Demo4 />
+
+Now when the list is loaded, each item loads in slightly delayed from the previous one.
+
+```js
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+const List = () => {
+  const [items, setItems] = useState([]);
+  const initialItems = ["Item", "Item", "Item"];
+
+  const loadItems = () => {
+    setItems(initialItems);
+  };
+
+  const clearItems = () => {
+    setItems([]);
+  };
+
+  return (
+    <div className="list">
+      {items.length ? (
+        <button onClick={clearItems}>Clear Items</button>
+      ) : (
+        <button onClick={loadItems}>Load Items</button>
+      )}
+      <ul>
+        {items &&
+          items.map((item, i) => (
+            <motion.li
+              key={i}
+              initial="hide"
+              animate="show"
+              variants={{
+                hide: { opacity: 0, x: 100 },
+                show: (i) => ({
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    delay: i * 0.1,
+                  },
+                }),
+              }}
+              custom={i}
+            >
+              {item}
+            </motion.li>
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+export default List;
+```
+
+## Conclusion
+
+This is a minimal example for the purposes of a tutorial, but as you can see, Framer Motion is a powerful animation library that can be easily added to any React project.
+
+Hopefully this has given you a brief understanding of how to use Framer Motion to animate a React component.
+
+To find out more about Framer Motion visit <a href="https://www.framer.com/motion/" target="_blank">https://www.framer.com/motion/</a>.
