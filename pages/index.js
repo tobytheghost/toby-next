@@ -4,6 +4,7 @@ import About from "../components/About/About";
 import Technologies from "../components/Technologies/Technologies";
 // import Contact from "../components/Contact/Contact";
 import Meta from "../components/Meta/Meta";
+import Blog from "../components/BlogSection/BlogSection";
 
 const App = () => {
   const meta = {
@@ -18,6 +19,7 @@ const App = () => {
       <Hero />
       <About />
       <Technologies />
+      <Blog />
       {/* <Contact /> */}
     </>
   );

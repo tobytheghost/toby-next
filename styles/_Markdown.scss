@@ -6,7 +6,7 @@
     line-height: 1.5rem;
   }
   pre {
-    border-radius: 0.5rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
     overflow-y: auto;
     * {
@@ -56,11 +56,9 @@
   }
   blockquote {
     border-left: 0.5rem solid $orange;
-    padding-left: 1rem;
     background: #eee;
-    border-radius: 0.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    border-radius: 4px;
+    padding: 1rem;
     > p:last-child {
       margin-bottom: unset;
     }
@@ -96,9 +94,7 @@
   code {
     color: #121212;
     background: #eeeeee;
-    padding: 0.5rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding: 0.1rem;
     line-height: 1rem;
     overflow-y: auto;
     font-size: 1.2rem;
@@ -125,6 +121,6 @@
     font-weight: 400;
     display: flex;
     align-items: center;
-    border-radius: 0.5rem;
+    border-radius: 4px;
   }
 }

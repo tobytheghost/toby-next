@@ -1,0 +1,61 @@
+---
+layout: post
+title: How to add an Admin account to WordPress using FTP
+extract: In the following article we're going to look at how you can add an Admin User account to a WordPress...
+description: Learn how you can create an Admin User account for your WordPress site using FTP by editing functions.php.
+image: https://picsum.photos/id/120/400/300
+topImage: https://picsum.photos/id/120/1200/300
+canonical: "https://tobygates.co.uk/blog/how-to-add-an-admin-account-to-wordpress-using-ftp/"
+date: 2021-02-15
+author: Toby Gates
+---
+
+## Introduction
+
+In the following article we're going to look at how you can **add an Admin User account** to a **WordPress** site using FTP.
+
+## Why would you want to add an Admin User using FTP?
+
+If you are working on a client site and require administrator access, or have forgotten your username / email address, you may want to add a new Admin User account to be able to login.
+
+One way to do this would be to add an Admin User using the WordPress database, but that would require you to both have access to the database and the ability to run MySQL queries directly. This can be both complex and time consuming.
+
+> **Note:** In the case of a hacked site, the Admin User account may be deleted. By **adding an Admin User account using FTP**, you can more quickly restore access to the WordPress admin area.
+
+Let's see how we can easily add an Admin User account to WordPress using FTP.
+
+## Adding an Admin User to WordPress using FTP
+
+Once you have connected to the WordPress site site via FTP, you will need to navigate to the **WordPress site's current theme folder** and find the `functions.php` file. Something like: `example.com/wp-content/themes/current-theme/functions.php`
+
+Right click on `functions.php` and select download.
+
+Once downloaded, open the file using a **code editor** such as `VSCode` or a **plain text editor** such as `Notepad`.
+
+At the bottom of the file add the following:
+
+```php
+function app_add_admin_account() {
+	$user = 'username';
+	$pass = 'password';
+	$email = 'email@example.com';
+	if ( !username_exists( $user ) && !email_exists( $email ) ) {
+		$user_id = wp_create_user( $user, $pass, $email );
+		$user = new WP_User( $user_id );
+		$user->set_role( 'administrator' );
+	}
+}
+add_action('init','app_add_admin_account');
+```
+
+> **Note:** Don't forget to change `username`, `password` and `email@example.com` to your own values.
+
+Save the file and re-upload it.
+
+Now you can **sign in** to the site's login area using the Admin User account you just added.
+
+Once you have logged in to the WordPress site, remember to go back and edit `functions.php` to **remove the code you added**. Removing the code won't remove the Admin User account you added.
+
+## Conclusion
+
+Hopefully this article has helped you learn how to add an Admin User account to a WordPress site using FTP.
