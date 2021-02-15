@@ -10,6 +10,132 @@ date: 2021-02-14
 author: Toby Gates
 ---
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+export const Demo1 = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+  const handleOnClick = () => {
+    setItems((items) => [...items, "Item"]);
+  };
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export const Demo2 = () => {
+  const [items, setItems] = useState(["Item", "Item", "Item"]);
+  const handleOnClick = () => {
+    setItems((items) => [...items, "Item"]);
+  };
+  return (
+    <div className="list">
+      <button onClick={handleOnClick}>Add New Item</button>
+      <ul>
+        {items.map((item, i) => (
+          <motion.li
+            key={i}
+            initial="hide"
+            animate="show"
+            variants={{
+              hide: { opacity: 0, x: 100 },
+              show: { opacity: 1, x: 0 },
+            }}
+          >
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export const Demo3 = () => {
+  const [items, setItems] = useState([]);
+  const loadItems = () => {
+    setItems(["Item", "Item", "Item"]);
+  };
+  const clearItems = () => {
+    setItems([]);
+  };
+  return (
+    <div className="list">
+      {items.length ? (
+        <button onClick={clearItems}>Clear Items</button>
+      ) : (
+        <button onClick={loadItems}>Load Items</button>
+      )}
+      {items.length !== 0 && (
+        <ul>
+          {items.map((item, i) => (
+            <motion.li
+              key={i}
+              initial="hide"
+              animate="show"
+              variants={{
+                hide: { opacity: 0, x: 100 },
+                show: { opacity: 1, x: 0 },
+              }}
+            >
+              {item}
+            </motion.li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export const Demo4 = () => {
+  const [items, setItems] = useState([]);
+  const loadItems = () => {
+    setItems(["Item", "Item", "Item"]);
+  };
+  const clearItems = () => {
+    setItems([]);
+  };
+  return (
+    <div className="list">
+      {items.length ? (
+        <button onClick={clearItems}>Clear Items</button>
+      ) : (
+        <button onClick={loadItems}>Load Items</button>
+      )}
+      {items.length !== 0 && (
+        <ul>
+          {items.map((item, i) => (
+            <motion.li
+              key={i}
+              initial="hide"
+              animate="show"
+              variants={{
+                hide: { opacity: 0, x: 100 },
+                show: (i) => ({
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    delay: i * 0.1,
+                  },
+                }),
+              }}
+              custom={i}
+            >
+              {item}
+            </motion.li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
 ## Introduction
 
 <p>
@@ -37,6 +163,8 @@ Here i've setup a basic **React component**. When the button is clicked a new it
 
 Let's look at how we can animate this so that each new item on the list animates into place rather than just appearing on the screen.
 
+> **Note:** in this demo we are using `i` as the key for each of the mapped items for the purposes of this tutorial. This is anti-pattern and should not be used in a production setting. We would instead use a unique value from each of the items like an `id`. <a href="https://reactjs.org/docs/lists-and-keys.html#keys" target="_blank">Read more about keys here.</a>
+
 **Code:**
 
 ```js
@@ -46,8 +174,7 @@ const List = () => {
   const [items, setItems] = useState(["Item", "Item", "Item"]);
 
   const handleOnClick = () => {
-    const newItems = [...items, "Item"];
-    setItems(newItems);
+    setItems((items) => [...items, "Item"]);
   };
 
   return (
@@ -66,26 +193,6 @@ export default List;
 ```
 
 **Demo:**
-
-import { useState } from "react";
-
-export const Demo1 = () => {
-  const [items, setItems] = useState(["Item", "Item", "Item"]);
-  const handleOnClick = () => {
-    const newItems = [...items, "Item"];
-    setItems(newItems);
-  };
-  return (
-    <div className="list">
-      <button onClick={handleOnClick}>Add New Item</button>
-      <ul>
-        {items.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
 
 > <Demo1 />
 
@@ -144,36 +251,6 @@ Let's add a fade-in / bounce-in effect for each of the list items.
 
 **Demo:**
 
-import { motion } from "framer-motion";
-
-export const Demo2 = () => {
-  const [items, setItems] = useState(["Item", "Item", "Item"]);
-  const handleOnClick = () => {
-    const newItems = [...items, "Item"];
-    setItems(newItems);
-  };
-  return (
-    <div className="list">
-      <button onClick={handleOnClick}>Add New Item</button>
-      <ul>
-        {items.map((item, i) => (
-          <motion.li
-            key={i}
-            initial="hide"
-            animate="show"
-            variants={{
-              hide: { opacity: 0, x: 100 },
-              show: { opacity: 1, x: 0 },
-            }}
-          >
-            {item}
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 > <Demo2 />
 
 ### Dynamic Animations
@@ -183,43 +260,6 @@ The above use case is great if you want to animate new objects on load, however 
 In the demo below you can see that each of the items load at the same time. Now let's look at how we can add a dynamic delay to each of the items.
 
 **Demo:**
-
-export const Demo3 = () => {
-  const initialItems = ["Item", "Item", "Item"];
-  const [items, setItems] = useState([]);
-  const loadItems = () => {
-    setItems(initialItems);
-  };
-  const clearItems = () => {
-    setItems([]);
-  };
-  return (
-    <div className="list">
-      {items.length ? (
-        <button onClick={clearItems}>Clear Items</button>
-      ) : (
-        <button onClick={loadItems}>Load Items</button>
-      )}
-      {items.length !== 0 && (
-        <ul>
-          {items.map((item, i) => (
-            <motion.li
-              key={i}
-              initial="hide"
-              animate="show"
-              variants={{
-                hide: { opacity: 0, x: 100 },
-                show: { opacity: 1, x: 0 },
-              }}
-            >
-              {item}
-            </motion.li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
 
 > <Demo3 />
 
@@ -256,50 +296,6 @@ Now that `i` is available to use we can set the transition to be `delay: i * 0.1
 
 **Demo:**
 
-export const Demo4 = () => {
-  const [items, setItems] = useState([]);
-  const initialItems = ["Item", "Item", "Item"];
-  const loadItems = () => {
-    setItems(initialItems);
-  };
-  const clearItems = () => {
-    setItems([]);
-  };
-  return (
-    <div className="list">
-      {items.length !== 0 ? (
-        <button onClick={clearItems}>Clear Items</button>
-      ) : (
-        <button onClick={loadItems}>Load Items</button>
-      )}
-      {items.length !== 0 && (
-        <ul>
-          {items.map((item, i) => (
-            <motion.li
-              key={i}
-              initial="hide"
-              animate="show"
-              variants={{
-                hide: { opacity: 0, x: 100 },
-                show: (i) => ({
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    delay: i * 0.1,
-                  },
-                }),
-              }}
-              custom={i}
-            >
-              {item}
-            </motion.li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
 > <Demo4 />
 
 Now when the list is loaded, each item loads in slightly delayed from the previous one.
@@ -312,10 +308,9 @@ import { motion } from "framer-motion";
 
 const List = () => {
   const [items, setItems] = useState([]);
-  const initialItems = ["Item", "Item", "Item"];
 
   const loadItems = () => {
-    setItems(initialItems);
+    setItems(["Item", "Item", "Item"]);
   };
 
   const clearItems = () => {
@@ -324,7 +319,7 @@ const List = () => {
 
   return (
     <div className="list">
-      {items.length !== 0 ? (
+      {items.length ? (
         <button onClick={clearItems}>Clear Items</button>
       ) : (
         <button onClick={loadItems}>Load Items</button>
