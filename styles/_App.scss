@@ -170,7 +170,6 @@ p {
     .MuiCard-root {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       margin-bottom: 1rem;
       padding: 1rem;
       width: 100%;
@@ -191,8 +190,10 @@ p {
     }
   }
   &__icons {
+    flex: 1;
     svg {
       // margin-right: 0.5rem;
+
       max-width: 4rem;
       max-height: 4rem;
     }
