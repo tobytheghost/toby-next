@@ -6,7 +6,7 @@ const Meta = ({ meta }) => {
     <Head>
       <title>{meta.title} | Toby Gates</title>
       <meta name="theme-color" content="#ff9800" />
-      <meta charset="UTF-8" />
+      <meta charSet="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={meta.description} />
