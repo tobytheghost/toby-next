@@ -50,6 +50,8 @@ const useBlogs = (visible = true, limit = false) => {
               <a className="post__link">
                 <div className="post__image-wrapper">
                   <img
+                    width="400"
+                    height="300"
                     className="post__image"
                     alt={frontMatter.title}
                     src={frontMatter.image || "https://picsum.photos/400/300"}
