@@ -57,7 +57,7 @@ function Nav() {
             </Link>
           </li>
           <li className="nav__item">
-            <Link href="/blog">
+            <Link href="/web-development-blog">
               <a className="nav__link" onClick={() => setMenuActive(false)}>
                 Blog
               </a>

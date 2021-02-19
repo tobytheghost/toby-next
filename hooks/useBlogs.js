@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import { frontMatter as blogPosts } from "../pages/blog/**/*.mdx";
+import { frontMatter as blogPosts } from "../pages/web-development-blog/**/*.mdx";
 import { formatDate } from "../utils/helpers";
 
 const useBlogs = (visible = true, limit = false) => {

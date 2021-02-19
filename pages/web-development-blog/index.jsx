@@ -6,7 +6,7 @@ const BlogPage = () => {
     title: "Web Development Blog - Web Developer",
     description:
       "Personal Blog by Toby Gates. My notes, thoughts, ideas & answers to frequently asked questions.",
-    canonical: "https://tobygates.co.uk/blog/",
+    canonical: "https://tobygates.co.uk/web-development-blog/",
   };
   return (
     <>

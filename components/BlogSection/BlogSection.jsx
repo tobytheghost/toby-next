@@ -23,7 +23,7 @@ const BlogSection = () => {
         {() => (
           <article className="section__container">
             <Blog section={true} visible={entered} />
-            <Link href="/blog">
+            <Link href="/web-development-blog">
               <a className="section__button">Read More</a>
             </Link>
           </article>
