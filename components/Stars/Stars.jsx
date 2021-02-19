@@ -6,7 +6,7 @@ const RotatingStars = () => {
   const stars = useRef();
 
   useFrame(() => {
-    stars.current.rotation.x = stars.current.rotation.y += 0.0005;
+    stars.current.rotation.y = stars.current.rotation.x += 0.00015;
   });
 
   return <Stars ref={stars} />;
