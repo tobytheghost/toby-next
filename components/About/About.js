@@ -80,15 +80,8 @@ function About() {
                 </figure>
                 <div className="section__content section__content--large">
                   <p>
-                    I'm a Full-Stack Developer currently working for{" "}
-                    <a
-                      href="https://www.fluidstudiosltd.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Fluid Studios
-                    </a>{" "}
-                    in Hertfordshire, UK.
+                    I'm a Full-Stack Developer currently based in Hertfordshire,
+                    UK.
                   </p>
                   <p>
                     I'm currently working on fast, responsive and secure web
@@ -145,8 +138,8 @@ function About() {
                     <LanguageIcon />
                     <h4 className="card__title">Support & Hosting</h4>
                     <p>
-                      Provide support to our legacy clients and host sites on
-                      our cloud-based hosting services.
+                      Provide support to legacy clients and host sites on
+                      cloud-based hosting services.
                     </p>
                   </Card>
                   <Card className="card">
