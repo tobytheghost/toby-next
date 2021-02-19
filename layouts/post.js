@@ -12,8 +12,8 @@ const components = {
 };
 
 const Post = ({ children, frontMatter }) => {
-  const { title, topImage, author, date } = frontMatter;
-  // console.log(frontMatter);
+  const { title, topImage, author, date, tags } = frontMatter;
+  //console.log(frontMatter);
   return (
     <>
       <Meta meta={frontMatter} />
@@ -79,6 +79,19 @@ const Post = ({ children, frontMatter }) => {
             animate="show"
           >
             By <strong>{author}</strong> - {formatDate(date)}
+            <div className="section__tags">
+              {tags.length && (
+                <ul className="tags">
+                  {tags.map((tag) => {
+                    return (
+                      <li key={tag} className="tags__tag">
+                        {tag}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           </motion.div>
           <motion.div
             className="markdown-body"

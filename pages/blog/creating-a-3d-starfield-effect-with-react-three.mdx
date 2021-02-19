@@ -1,0 +1,223 @@
+---
+layout: post
+title: Creating a 3D starfield effect with React & Three
+extract: In this article we are going to explore how to create a component with a 3D starfield type effect similar to the one...
+description: How to create a 3D starfield effect for a react component using React Three and React Three Fiber.
+image: https://picsum.photos/id/537/400/300
+topImage: https://picsum.photos/id/537/1200/300
+canonical: "https://tobygates.co.uk/blog/creating-a-3d-starfield-effect-with-react-three/"
+date: 2021-02-19
+author: Toby Gates
+tags:
+  - React
+  - Three.js
+  - JavaScript
+---
+
+import dynamic from "next/dynamic";
+import ThreeDRotationIcon from "@material-ui/icons/ThreeDRotation";
+import Link from "next/link";
+import {
+  StarsDemo1,
+  StarsDemo2,
+  StarsDemo3,
+} from "../../demos/StarsDemo/index";
+
+## Introduction
+
+In this article we are going to explore how to create a component with a 3D starfield type effect similar to the one on the <Link href="/"><a href="/" target="_blank">homepage</a></Link> using <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a> and <a href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a>.
+
+Below is a demo of what we'll be building:
+
+**Demo:**
+
+<StarsDemo1 />
+
+## Setting up the basic component
+
+Before we get started on the component we'll need to install a few packages. The packages we'll be using are `three`, `react-three-fiber` and `@react-three/drei`.
+
+- `three` (Three.js) is an easy to use, lightweight, 3D library with a default WebGL renderer.
+
+- `react-three-fiber` is a React renderer for Three.js.
+
+- `@react-three/drei` (originally just `drei`) is a collection of useful helpers and abstractions for `react-three-fiber`.
+
+We can install these packages as follows:
+
+```bash
+npm install three react-three-fiber @react-three/drei
+```
+
+Once the packages have been installed we're ready to create our component.
+
+We'll start off with a basic **React functional component** and import the modules we need.
+
+Then we need to include the `Stars` element from `@react-three/drei` and wrap it in the `Canvas` element from `react-three-fiber`.
+
+**Code:**
+
+```jsx
+import React from "react";
+import { Canvas } from "react-three-fiber";
+import { Stars } from "@react-three/drei";
+
+const Starfield = () => {
+  return (
+    <div className="stars">
+      <Canvas>
+        <Stars />
+      </Canvas>
+    </div>
+  );
+};
+
+export default Starfield;
+```
+
+This provides us with a very basic version of the starfield effect we are looking for.
+
+**Demo:**
+
+<StarsDemo2 />
+
+> **Note:** For the sake of the demo, we've also add a background, height & margin so that the element is visible.
+
+## Animating the component
+
+Next we need to look at how we can animate the component.
+
+Let's setup a new functional component called `RotatingStars` to return the `Stars` component we imported earlier, and use it to replace the `Stars` component wrapped in the `Canvas`.
+
+**Code:**
+
+```jsx
+import React from "react";
+import { Canvas } from "react-three-fiber";
+import { Stars } from "@react-three/drei";
+
+const RotatingStars = () => {
+  return <Stars />;
+};
+
+const Starfield = () => {
+  return (
+    <div className="stars">
+      <Canvas>
+        <RotatingStars />
+      </Canvas>
+    </div>
+  );
+};
+
+export default Starfield;
+```
+
+Now that `Stars` is wrapped in it's own component, we are able to manipulate that element.
+
+The `useFrame` hook provided by `react-three-fiber` will allow us to hook the component into the render-loop.
+
+We will also need a way of letting React know which element we'll be animating so we'll need to import the `useRef` hook.
+
+```jsx
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "react-three-fiber";
+import { Stars } from "@react-three/drei";
+```
+
+In our `RotatingStars` function, let's create a ref and attach it to the `Stars` component.
+
+```jsx
+const RotatingStars = () => {
+  const stars = useRef();
+
+  return <Stars ref={stars} />;
+};
+```
+
+Now we have a reference to the element we can update its rotation on each render of the render-loop using the `useFrame` hook.
+
+```jsx
+const RotatingStars = () => {
+  const stars = useRef();
+
+  useFrame(() => {
+    stars.current.rotation.x = stars.current.rotation.y += 0.00015;
+  });
+
+  return <Stars ref={stars} />;
+};
+```
+
+Here we've set the `x` rotation to be slightly offset from the `y` rotation - giving us the slow spinning effect.
+
+You should now have something that looks like this:
+
+**Code:**
+
+```jsx
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "react-three-fiber";
+import { Stars } from "@react-three/drei";
+
+const Starfield = () => {
+  const RotatingStars = () => {
+    const stars = useRef();
+
+    useFrame(() => {
+      stars.current.rotation.x = stars.current.rotation.y += 0.00015;
+    });
+
+    return <Stars ref={stars} />;
+  };
+
+  return (
+    <div className="stars">
+      <Canvas>
+        <RotatingStars />
+      </Canvas>
+    </div>
+  );
+};
+
+export default Starfield;
+```
+
+**Demo:**
+
+<StarsDemo3 />
+
+## Movement Controls
+
+On the version on the homepage there is a button to allow a '3D orbit' type effect. This can be achieved using `OrbitControls` component included in the `@react-three/drei` package.
+
+It's simply a matter of importing the component and wrapping it within the `Canvas` component.
+
+```js
+import { Stars, OrbitControls } from "@react-three/drei";
+```
+
+```js
+return (
+  <div className="stars">
+    <Canvas>
+      <OrbitControls />
+      <RotatingStars />
+    </Canvas>
+  </div>
+);
+```
+
+This gives us the orbit controls as shown in the demo below:
+
+**Demo:**
+
+<StarsDemo1 />
+
+> **Note:** The '3D' button on the homepage toggles an `orbit` state which in turn toggles the `OrbitControls` component on and off.
+
+## Conclusion
+
+Hopefully this article has given you a brief understanding of how to setup a very basic `react-three-fiber` component while also creating a fun effect that you can use in your projects.
+
+Check out the full version of the homepage component on my GitHub: <a href="https://github.com/tobytheghost/toby-next/blob/main/components/Stars/Stars.jsx" target="\_blank" rel="noopener noreferrer">Stars.jsx</a>

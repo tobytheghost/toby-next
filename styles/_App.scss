@@ -218,6 +218,7 @@ p {
   }
   &__byline {
     margin-bottom: 2rem;
+    text-align: center;
   }
   &__button {
     background: #2196f3;
@@ -350,6 +351,23 @@ p {
           margin-bottom: 0;
         }
       }
+    }
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  place-content: center;
+  &__tag {
+    padding: 5px 10px;
+    background: #2196f3;
+    border-radius: 1rem;
+    color: #fff;
+    margin-right: 0.5rem;
+    &:last-child {
+      margin-right: unset;
     }
   }
 }
