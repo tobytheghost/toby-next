@@ -16,12 +16,8 @@ const StarsCanvas = ({ orbit }) => {
   return (
     <div className="canvas">
       <Canvas>
-        {/* <ambientLight /> */}
-        {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
-        {/* <pointLight position={[-10, -10, -10]} /> */}
         <RotatingStars />
         {orbit && <OrbitControls />}
-        {/* <Box position={[-1.2, -2, 0]} pivot={[0, 0, 0]} /> */}
       </Canvas>
     </div>
   );
