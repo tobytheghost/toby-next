@@ -29,23 +29,23 @@ function Hero() {
       <Stars orbit={orbit} />
       {!orbit ? (
         <div className="hero__content">
-          <motion.h1
-            variants={{
-              hidden: {
-                opacity: 0,
-                y: 100,
-              },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: 0.3,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
+          <h1
+          // variants={{
+          //   hidden: {
+          //     opacity: 0,
+          //     y: 100,
+          //   },
+          //   show: {
+          //     opacity: 1,
+          //     y: 0,
+          //     transition: {
+          //       delay: 0.3,
+          //     },
+          //   },
+          // }}
+          // initial="hidden"
+          // animate="show"
+          // exit="hidden"
           >
             <span className="hero__title">
               Hi, I'm
@@ -54,55 +54,55 @@ function Hero() {
             <span className="hero__subtitle">
               I'm a full-stack web developer.
             </span>
-          </motion.h1>
-          <motion.div
+          </h1>
+          <div
             className="hero__buttons"
-            variants={{
-              hidden: {
-                opacity: 0,
-                y: 100,
-              },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: 0.45,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
+            // variants={{
+            //   hidden: {
+            //     opacity: 0,
+            //     y: 100,
+            //   },
+            //   show: {
+            //     opacity: 1,
+            //     y: 0,
+            //     transition: {
+            //       delay: 0.45,
+            //     },
+            //   },
+            // }}
+            // initial="hidden"
+            // animate="show"
+            // exit="hidden"
           >
             <button className="hero__button" onClick={scrollToSection}>
               My Work
               <ArrowForwardIcon />
             </button>
-          </motion.div>
+          </div>
         </div>
       ) : (
         <div className="hero__content">
-          <motion.div
+          <div
             className="hero__subtitle"
-            variants={{
-              hidden: {
-                opacity: 0,
-                y: 100,
-              },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: 0.3,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
+            // variants={{
+            //   hidden: {
+            //     opacity: 0,
+            //     y: 100,
+            //   },
+            //   show: {
+            //     opacity: 1,
+            //     y: 0,
+            //     transition: {
+            //       delay: 0.3,
+            //     },
+            //   },
+            // }}
+            // initial="hidden"
+            // animate="show"
+            // exit="hidden"
           >
             Drag to explore space!
-          </motion.div>
+          </div>
         </div>
       )}
       <button className="hero__orbit" onClick={toggleOrbit}>
