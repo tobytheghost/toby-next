@@ -334,3 +334,22 @@ p {
     margin-right: unset;
   }
 }
+
+.about {
+  .section {
+    &__cards {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+      flex: 1;
+      align-content: stretch;
+      justify-content: space-between;
+      padding-bottom: unset;
+      .MuiCard-root {
+        &:nth-last-child(-n + 2) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

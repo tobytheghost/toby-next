@@ -7,7 +7,7 @@ const Meta = ({ meta }) => {
       <title>{meta.title} | Toby Gates</title>
       <meta name="theme-color" content="#ff9800" />
       <meta charSet="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={meta.description} />
       <link rel="canonical" href={meta.canonical}></link>

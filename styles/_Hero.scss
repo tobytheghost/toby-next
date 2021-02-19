@@ -85,4 +85,29 @@
       margin-left: 5px;
     }
   }
+  &__orbit {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.canvas > div {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }

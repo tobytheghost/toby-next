@@ -5,6 +5,7 @@ import Technologies from "../components/Technologies/Technologies";
 // import Contact from "../components/Contact/Contact";
 import Meta from "../components/Meta/Meta";
 import Blog from "../components/BlogSection/BlogSection";
+import dynamic from "next/dynamic";
 
 const App = () => {
   const meta = {
