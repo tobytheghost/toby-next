@@ -21,7 +21,6 @@ const App = () => {
       <About />
       <Technologies />
       <Blog />
-      {/* <Contact /> */}
     </>
   );
 };
