@@ -76,7 +76,12 @@ function About() {
                   <h3>Who am I?</h3>
                 </div>
                 <figure className="about__image">
-                  <img src="../../assets/img/toby-gates.png" alt="Toby Gates" />
+                  <img
+                    width="250"
+                    height="250"
+                    src="../../assets/img/toby-gates.jpg"
+                    alt="Toby Gates"
+                  />
                 </figure>
                 <div className="section__content section__content--large">
                   <p>
