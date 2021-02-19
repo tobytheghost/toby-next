@@ -24,7 +24,7 @@ const BlogSection = () => {
           <article className="section__container">
             <Blog section={true} visible={entered} />
             <Link href="/web-development-blog">
-              <a className="section__button">Read More</a>
+              <a className="section__button">Check out my other articles!</a>
             </Link>
           </article>
         )}
