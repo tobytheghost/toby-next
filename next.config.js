@@ -2,10 +2,6 @@ const withMdxEnhanced = require("next-mdx-enhanced");
 
 const config = {
   trailingSlash: true,
-  i18n: {
-    locales: ["en-GB"],
-    defaultLocale: "en-GB",
-  },
 };
 
 module.exports = withMdxEnhanced({
