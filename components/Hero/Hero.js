@@ -105,7 +105,11 @@ function Hero() {
           </div>
         </div>
       )}
-      <button className="hero__orbit" onClick={toggleOrbit}>
+      <button
+        className="hero__orbit"
+        onClick={toggleOrbit}
+        aria-label="Orbit 3D Background"
+      >
         <ThreeDRotationIcon />
       </button>
     </section>

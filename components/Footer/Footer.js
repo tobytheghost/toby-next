@@ -32,6 +32,7 @@ function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <span>LinkedIn</span>
                     <LinkedInIcon />
                   </a>
                 </li>
@@ -41,6 +42,7 @@ function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <span>Github</span>
                     <GitHubIcon />
                   </a>
                 </li>
@@ -50,6 +52,7 @@ function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <span>Facebook</span>
                     <FacebookIcon />
                   </a>
                 </li>
@@ -59,23 +62,23 @@ function Footer() {
               Website Design & Build - Toby Gates - {new Date().getFullYear()}
             </div>
           </section>
-          <motion.button
-            className="top-button"
-            onClick={scrollToSection}
-            variants={{
-              show: {
-                opacity: 1,
-              },
-              hide: {
-                opacity: 0,
-              },
-            }}
-            animate={isVisible ? "show" : "hide"}
-            initial={"hide"}
-            exit={"hide"}
-          >
-            <KeyboardArrowUpIcon />
-          </motion.button>
+          {/* <motion.button
+              className="top-button"
+              onClick={scrollToSection}
+              variants={{
+                show: {
+                  opacity: 1,
+                },
+                hide: {
+                  opacity: 0,
+                },
+              }}
+              animate={isVisible ? "show" : "hide"}
+              initial={"hide"}
+              exit={"hide"}
+            >
+              <KeyboardArrowUpIcon />
+            </motion.button> */}
         </>
       )}
     </VisibilitySensor>

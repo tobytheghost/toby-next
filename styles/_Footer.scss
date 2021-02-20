@@ -27,8 +27,14 @@
       color: #fff;
       line-height: 1;
       padding: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
       &:hover {
         color: #fff;
+      }
+      span {
+        text-indent: -9999px;
+        display: inline-block;
       }
     }
     svg {

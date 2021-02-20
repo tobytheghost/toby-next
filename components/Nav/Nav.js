@@ -80,6 +80,7 @@ function Nav() {
                   rel="noopener noreferrer"
                   className="nav__link"
                 >
+                  <span className="nav__label">LinkedIn</span>
                   <LinkedInIcon />
                 </a>
               </li>
@@ -90,6 +91,7 @@ function Nav() {
                   rel="noopener noreferrer"
                   className="nav__link"
                 >
+                  <span className="nav__label">Github</span>
                   <GitHubIcon />
                 </a>
               </li>
@@ -100,6 +102,7 @@ function Nav() {
                   rel="noopener noreferrer"
                   className="nav__link"
                 >
+                  <span className="nav__label">Facebook</span>
                   <FacebookIcon />
                 </a>
               </li>
