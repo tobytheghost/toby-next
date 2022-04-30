@@ -101,10 +101,10 @@ function Technologies () {
               <Tile title='Less' iconType='fab' icon='less' color='#2196f3' />
               <Tile title='Git' iconType='fab' icon='git-alt' color='#f44336' />
               <Tile title='Node' iconType='fab' icon='node-js' color='#4caf50' />
-              <ImageTile title='Jest' image='/assets/img/jest-icon.png'/>
-              <ImageTile title='MySQL' image='/assets/img/mysql.png'/>
               <ImageTile title='VS Code' image='/assets/img/code.jpg'/>
               <ImageTile title='Next' image='/assets/img/next.png'/>
+              <ImageTile title='Jest' image='/assets/img/jest-icon.png'/>
+              <ImageTile title='MySQL' image='/assets/img/mysql.png'/>
               <Tile title='PHP' iconType='fab' icon='php' color='#f48fb1' />
               <Tile title='WordPress' iconType='fab' icon='wordpress' color='#2196f3' />
               <ImageTile title='WooCommerce' image='/assets/img/woocommerce.webp'/>

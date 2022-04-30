@@ -14,6 +14,9 @@ const CONTENT = [
   'a Front-End Engineer.',
   'a problem solver.',
   'an out-of-the-box thinker.',
+  'a board game geek.',
+  'a food lover.',
+  'a traveller.',
 ]
 
 function Hero () {
@@ -35,7 +38,7 @@ function Hero () {
   }
 
   useEffect(() => {
-    if (!typewriter) return
+    if (!typewriter || !typewriter.current) return
 
     let interval = setInterval(typeText, 100)
     let textState = 0
