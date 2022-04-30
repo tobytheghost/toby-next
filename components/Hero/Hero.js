@@ -1,27 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { scroller } from 'react-scroll'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-// import VisibilitySensor from "react-visibility-sensor";
-import { motion, AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation'
+import useTypewriter from '../../hooks/useTypewriter'
 
 const Stars = dynamic(() => import('../Stars/Stars'), {
   ssr: false
 })
 
-const CONTENT = [
-  'a Front-End Engineer.',
-  'a problem solver.',
-  'an out-of-the-box thinker.',
-  'a board game geek.',
-  'a food lover.',
-  'a traveller.',
-]
-
 function Hero () {
+  const [orbit, setOrbit] = useState(false)
   const typewriter = useRef()
-  const cursor = useRef()
+  const toggleOrbit = () => setOrbit(orbit => !orbit)
+
+  const content = [
+    'a Front-End Engineer.',
+    'a problem solver.',
+    'an out-of-the-box thinker.',
+    'a board game geek.',
+    'a food lover.',
+    'a traveller.',
+  ]
 
   const scrollToSection = () => {
     scroller.scrollTo('section', {
@@ -31,53 +31,7 @@ function Hero () {
     })
   }
 
-  const [orbit, setOrbit] = useState(false)
-
-  const toggleOrbit = () => {
-    setOrbit(orbit => !orbit)
-  }
-
-  useEffect(() => {
-    if (!typewriter || !typewriter.current) return
-
-    let interval = setInterval(typeText, 100)
-    let textState = 0
-    let partIndex = 0
-
-    function typeText () {
-      const text = CONTENT[textState].substring(0, partIndex + 1)
-      typewriter.current.innerHTML = text
-      partIndex++
-
-      if (text === CONTENT[textState]) {
-        clearInterval(interval)
-        setTimeout(() => (interval = setInterval(deleteText, 50)), 1000)
-      }
-    }
-
-    function deleteText () {
-      const text = CONTENT[textState].substring(0, partIndex - 1)
-      typewriter.current.innerHTML = text
-      partIndex--
-
-      if (text === '') {
-        clearInterval(interval)
-        if (textState == CONTENT.length - 1) {
-          textState = 0
-        } else {
-          textState++
-        }
-        partIndex = 0
-        setTimeout(() => {
-          interval = setInterval(typeText, 100)
-        }, 200)
-      }
-    }
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [])
+  useTypewriter(typewriter, content)
 
   return (
     <section className='hero'>
