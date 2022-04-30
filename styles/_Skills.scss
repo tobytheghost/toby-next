@@ -1,0 +1,67 @@
+.skills {
+  &__bars {
+    width: 100%;
+  }
+}
+
+.skill {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  &__title {
+    padding-left: 1rem;
+    padding: 0.5rem;
+    font-weight: 700;
+  }
+  &__thumb {
+    padding: 0.25rem;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 6rem;
+	padding-right: .5rem;
+  }
+  &__progress {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.08);
+	position: relative;
+  }
+  &__complete {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+  }
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+	display: flex;
+	svg {
+		max-width: 100%;
+		max-height: 100%;
+	}
+  }
+  &__bar {
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  &__sub-skills {
+    padding-left: 2rem;
+	padding-right: 1rem;
+    .skill {
+      &__title {
+        font-size: 12px;
+		padding: 0.25rem;
+      }
+	  &__icon {
+		width: 1.5rem;
+		height: 1.5rem;
+	  }
+    }
+  }
+}

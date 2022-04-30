@@ -85,18 +85,17 @@ function About() {
                 </figure>
                 <div className="section__content section__content--large">
                   <p>
-                    I'm a Full-Stack Developer currently based in Hertfordshire,
+                    I'm a Front-End Engineer currently based in Bedfordshire,
                     UK.
                   </p>
                   <p>
-                    I'm currently working on fast, responsive and secure web
-                    applications and supporting our legacy clients.
+                    I'm currently working on fast, responsive and secure web applications and experiences in the Ecommerce, Travel and E-Gaming sectors.
                   </p>
-                  <p>
+                  {/* <p>
                     <Link className="cta" to="contact" smooth={true}>
                       Let's make something together!
                     </Link>
-                  </p>
+                  </p> */}
                 </div>
               </motion.div>
 
@@ -127,7 +126,7 @@ function About() {
                     <CodeIcon />
                     <h4 className="card__title">HTML5 / CSS3 / JS</h4>
                     <p>
-                      Fast and dynamic web pages and applications using the
+                      Fast and dynamic web apps and experiences using the
                       latest frameworks.
                     </p>
                   </Card>
@@ -135,93 +134,26 @@ function About() {
                     <StorageIcon />
                     <h4 className="card__title">Back-end Development</h4>
                     <p>
-                      Work with powerful back-end REST Api services and CMS
-                      systems.
+                      Work with powerful back-end REST Api services and create Node.js integrations.
                     </p>
                   </Card>
                   <Card className="card">
                     <LanguageIcon />
-                    <h4 className="card__title">Support & Hosting</h4>
+                    <h4 className="card__title">Support</h4>
                     <p>
-                      Provide support to legacy clients and host sites on
-                      cloud-based hosting services.
+                      Provide support to clients with varying levels of technological expertise.
                     </p>
                   </Card>
                   <Card className="card">
                     <GitHubIcon />
-                    <h4 className="card__title">Git Version Control</h4>
+                    <h4 className="card__title">Best Practices</h4>
                     <p>
-                      Keep web projects up-to-date and synchronised for better
-                      cleaner development.
+                      Use industry standards such as Git, CI/CD and Agile development.
                     </p>
                   </Card>
                 </div>
               </motion.aside>
             </div>
-
-            <motion.div
-              className="section__row"
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 100,
-                },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.6,
-                  },
-                },
-              }}
-              initial="hidden"
-              animate={entered ? "show" : "hidden"}
-              // exit="hidden"
-            >
-              <div className="section__column section__column--full">
-                <ul className="about__widgets">
-                  <li className="about__widget">
-                    <div className="about__widget-icon">
-                      <SpeedIcon />
-                    </div>
-                    <div className="about__widget-title">Fast</div>
-                    <div className="about__widget-info">
-                      Focusing on fast load times and a smooth client
-                      interaction.
-                    </div>
-                  </li>
-                  <li className="about__widget">
-                    <div className="about__widget-icon">
-                      <DevicesIcon />
-                    </div>
-                    <div className="about__widget-title">Responsive</div>
-                    <div className="about__widget-info">
-                      Building sites that work responsively on devices both big
-                      and small.
-                    </div>
-                  </li>
-                  <li className="about__widget">
-                    <div className="about__widget-icon">
-                      <EmojiObjectsIcon />
-                    </div>
-                    <div className="about__widget-title">Intuitive</div>
-                    <div className="about__widget-info">
-                      Developing UX/UI that's easy to use and understand.
-                    </div>
-                  </li>
-                  <li className="about__widget">
-                    <div className="about__widget-icon">
-                      <FlashOnIcon />
-                    </div>
-                    <div className="about__widget-title">Dynamic</div>
-                    <div className="about__widget-info">
-                      Putting extra power into your website. I love making pages
-                      come to life.
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
           </article>
         )}
       </VisibilitySensor>
