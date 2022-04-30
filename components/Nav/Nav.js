@@ -17,6 +17,45 @@ function Nav () {
     setMenuActive(false)
   })
 
+  function NavItem ({ href, text }) {
+    const handleNavOnClick = () => setMenuActive(false)
+    return (
+      <li className='nav__item'>
+        <Link href={href}>
+          <a className='nav__link' onClick={handleNavOnClick}>
+            {text}
+          </a>
+        </Link>
+      </li>
+    )
+  }
+
+  function SocialItem ({ href, text, icon }) {
+    return (
+      <li className='social__item'>
+        <a
+          href={href}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='nav__link'
+        >
+          <span className='nav__label'>{text}</span>
+          {icon}
+        </a>
+      </li>
+    )
+  }
+
+  function MenuButton () {
+    const handleButtonOnClick = () =>
+      menuActive ? setMenuActive(false) : setMenuActive(true)
+    return (
+      <button className='nav__button' onClick={handleButtonOnClick}>
+        <span />
+      </button>
+    )
+  }
+
   return (
     <section className={className}>
       <nav className='nav__container'>
@@ -47,7 +86,7 @@ function Nav () {
         </ul>
       </nav>
       <div className='nav__icon'>
-        <MenuButton />
+        <MenuButton menuActive={menuActive} />
       </div>
       <Link href='/'>
         <a onClick={() => setMenuActive(false)}>
@@ -55,47 +94,6 @@ function Nav () {
         </a>
       </Link>
     </section>
-  )
-}
-
-function NavItem ({ href, text }) {
-  const handleNavOnClick = () => setMenuActive(false)
-
-  return (
-    <li className='nav__item'>
-      <Link href={href}>
-        <a className='nav__link' onClick={handleNavOnClick}>
-          {text}
-        </a>
-      </Link>
-    </li>
-  )
-}
-
-function SocialItem ({ href, text, icon }) {
-  return (
-    <li className='social__item'>
-      <a
-        href={href}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='nav__link'
-      >
-        <span className='nav__label'>{text}</span>
-        {icon}
-      </a>
-    </li>
-  )
-}
-
-function MenuButton () {
-  const handleButtonOnClick = () =>
-    menuActive ? setMenuActive(false) : setMenuActive(true)
-
-  return (
-    <button className='nav__button' onClick={handleButtonOnClick}>
-      <span />
-    </button>
   )
 }
 

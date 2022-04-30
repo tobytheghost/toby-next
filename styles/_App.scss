@@ -347,11 +347,11 @@ p {
       align-content: stretch;
       justify-content: space-between;
       padding-bottom: unset;
-      .MuiCard-root {
-        &:nth-last-child(-n + 2) {
-          margin-bottom: 0;
-        }
-      }
+      // .MuiCard-root {
+      //   &:nth-last-child(-n + 2) {
+      //     margin-bottom: 0;
+      //   }
+      // }
     }
   }
 }
