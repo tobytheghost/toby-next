@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { scroller } from 'react-scroll'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 // import VisibilitySensor from "react-visibility-sensor";
 import { motion, AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation'
+
 const Stars = dynamic(() => import('../Stars/Stars'), {
   ssr: false
 })
 
+const CONTENT = [
+  'a Front-End Engineer.',
+  'a problem solver.',
+  'an out-of-the-box thinker.',
+]
+
 function Hero () {
+  const typewriter = useRef()
+  const cursor = useRef()
+
   const scrollToSection = () => {
     scroller.scrollTo('section', {
       duration: 800,
@@ -24,6 +34,48 @@ function Hero () {
     setOrbit(orbit => !orbit)
   }
 
+  useEffect(() => {
+    if (!typewriter) return
+
+    let interval = setInterval(typeText, 100)
+    let textState = 0
+    let partIndex = 0
+
+    function typeText () {
+      const text = CONTENT[textState].substring(0, partIndex + 1)
+      typewriter.current.innerHTML = text
+      partIndex++
+
+      if (text === CONTENT[textState]) {
+        clearInterval(interval)
+        setTimeout(() => (interval = setInterval(deleteText, 50)), 1000)
+      }
+    }
+
+    function deleteText () {
+      const text = CONTENT[textState].substring(0, partIndex - 1)
+      typewriter.current.innerHTML = text
+      partIndex--
+
+      if (text === '') {
+        clearInterval(interval)
+        if (textState == CONTENT.length - 1) {
+          textState = 0
+        } else {
+          textState++
+        }
+        partIndex = 0
+        setTimeout(() => {
+          interval = setInterval(typeText, 100)
+        }, 200)
+      }
+    }
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   return (
     <section className='hero'>
       <Stars orbit={orbit} />
@@ -35,7 +87,7 @@ function Hero () {
               <span className='hero__title--alternative'> Toby Gates</span>.
             </span>
             <span className='hero__subtitle'>
-              I'm a full-stack web developer.
+              I'm <span ref={typewriter}>a Front-End Engineer.</span>
             </span>
           </h1>
           <div className='hero__buttons'>
