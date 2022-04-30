@@ -12,7 +12,7 @@ const StarsDemo1 = () => {
         marginBottom: "1rem",
       }}
     >
-      <StarsCanvas orbit={true} />
+      <StarsCanvas orbit={true} noOrbitals={true} />
     </div>
   );
 };

@@ -76,14 +76,14 @@ const RotatingStars = () => {
   return <Stars ref={stars} />;
 };
 
-const StarsCanvas = ({ orbit }) => {
+const StarsCanvas = ({ orbit, noOrbitals }) => {
   return (
     <div className="canvas">
       <Canvas>
         <directionalLight intensity={1} castShadow position={[0, 0, 1]} />
         <RotatingStars />
-        <Orbital />
-        <Orbital2 />
+        {!noOrbitals && <Orbital />}
+        {!noOrbitals && <Orbital2 />}
         {orbit && <OrbitControls />}
       </Canvas>
     </div>
