@@ -1,88 +1,65 @@
-import React, { useState } from "react";
-import { animateScroll as scroll } from "react-scroll";
-import VisibilitySensor from "react-visibility-sensor";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react'
+import { animateScroll as scroll } from 'react-scroll'
+import VisibilitySensor from 'react-visibility-sensor'
 
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import FacebookIcon from '@material-ui/icons/Facebook'
 
-function Footer() {
+function Footer () {
   const scrollToSection = () => {
-    scroll.scrollToTop();
-  };
+    scroll.scrollToTop()
+  }
 
-  const [isVisible, setVisibility] = useState(false);
+  const [isVisible, setVisibility] = useState(false)
 
-  const handleOnChange = (visibility) => {
-    setVisibility(visibility);
-  };
+  const handleOnChange = visibility => {
+    setVisibility(visibility)
+  }
 
   return (
     <VisibilitySensor partialVisibility onChange={handleOnChange}>
       {() => (
         <>
-          <section className="section footer">
-            <div className="footer__links">
-              <ul className="footer__items">
-                <li className="footer__item">
-                  <a
-                    href="https://www.linkedin.com/in/tobygates/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>LinkedIn</span>
-                    <LinkedInIcon />
-                  </a>
-                </li>
-                <li className="footer__item">
-                  <a
-                    href="https://github.com/tobytheghost/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>Github</span>
-                    <GitHubIcon />
-                  </a>
-                </li>
-                <li className="footer__item">
-                  <a
-                    href="https://www.facebook.com/tobytheghost"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>Facebook</span>
-                    <FacebookIcon />
-                  </a>
-                </li>
+          <section className='section footer'>
+            <div className='footer__links'>
+              <ul className='footer__items'>
+                <FooterItem
+                  href='https://www.linkedin.com/in/tobygates/'
+                  text='LinkedIn'
+                  icon={<LinkedInIcon />}
+                />
+                <FooterItem
+                  href='https://github.com/tobytheghost/'
+                  text='Github'
+                  icon={<GitHubIcon />}
+                />
+                <FooterItem
+                  href='https://www.facebook.com/tobytheghost'
+                  text='Facebook'
+                  icon={<FacebookIcon />}
+                />
               </ul>
             </div>
-            <div className="footer__copy">
+            <div className='footer__copy'>
               Website Design & Build - Toby Gates - {new Date().getFullYear()}
             </div>
           </section>
-          {/* <motion.button
-              className="top-button"
-              onClick={scrollToSection}
-              variants={{
-                show: {
-                  opacity: 1,
-                },
-                hide: {
-                  opacity: 0,
-                },
-              }}
-              animate={isVisible ? "show" : "hide"}
-              initial={"hide"}
-              exit={"hide"}
-            >
-              <KeyboardArrowUpIcon />
-            </motion.button> */}
         </>
       )}
     </VisibilitySensor>
-  );
+  )
 }
 
-export default Footer;
+function FooterItem ({ href, text, icon }) {
+  return (
+    <li className='footer__item'>
+      <a href={href} target='_blank' rel='noopener noreferrer'>
+        <span>{text}</span>
+        {icon}
+      </a>
+    </li>
+  )
+}
+
+export default Footer
