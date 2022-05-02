@@ -5,7 +5,7 @@ extract: In this article we are going to explore how to create a component with 
 description: How to create a 3D starfield effect for a react component using React Three and React Three Fiber.
 image: https://picsum.photos/id/537/400/300
 topImage: https://picsum.photos/id/537/1200/300
-canonical: "https://tobygates.co.uk/web-development-blog/creating-a-3d-starfield-effect-with-react-three/"
+canonical: 'https://tobygates.co.uk/web-development-blog/creating-a-3d-starfield-effect-with-react-three/'
 date: 2021-02-19
 author: Toby Gates
 tags:
@@ -14,14 +14,14 @@ tags:
   - JavaScript
 ---
 
-import dynamic from "next/dynamic";
-import ThreeDRotationIcon from "@material-ui/icons/ThreeDRotation";
-import Link from "next/link";
+import dynamic from 'next/dynamic'
+import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation'
+import Link from 'next/link'
 import {
   StarsDemo1,
   StarsDemo2,
-  StarsDemo3,
-} from "../../demos/StarsDemo/index";
+  StarsDemo3
+} from '../../components/demos/StarsDemo'
 
 ## Introduction
 
@@ -58,21 +58,21 @@ Then we need to include the `Stars` element from `@react-three/drei` and wrap it
 **Code:**
 
 ```jsx
-import React from "react";
-import { Canvas } from "react-three-fiber";
-import { Stars } from "@react-three/drei";
+import React from 'react'
+import { Canvas } from 'react-three-fiber'
+import { Stars } from '@react-three/drei'
 
 const Starfield = () => {
   return (
-    <div className="stars">
+    <div className='stars'>
       <Canvas>
         <Stars />
       </Canvas>
     </div>
-  );
-};
+  )
+}
 
-export default Starfield;
+export default Starfield
 ```
 
 This provides us with a very basic version of the starfield effect we are looking for.
@@ -92,25 +92,25 @@ Let's setup a new functional component called `RotatingStars` to return the `Sta
 **Code:**
 
 ```jsx
-import React from "react";
-import { Canvas } from "react-three-fiber";
-import { Stars } from "@react-three/drei";
+import React from 'react'
+import { Canvas } from 'react-three-fiber'
+import { Stars } from '@react-three/drei'
 
 const RotatingStars = () => {
-  return <Stars />;
-};
+  return <Stars />
+}
 
 const Starfield = () => {
   return (
-    <div className="stars">
+    <div className='stars'>
       <Canvas>
         <RotatingStars />
       </Canvas>
     </div>
-  );
-};
+  )
+}
 
-export default Starfield;
+export default Starfield
 ```
 
 Now that `Stars` is wrapped in it's own component, we are able to manipulate that element.
@@ -120,33 +120,33 @@ The `useFrame` hook provided by `react-three-fiber` will allow us to hook the co
 We will also need a way of letting React know which element we'll be animating so we'll need to import the `useRef` hook.
 
 ```jsx
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
-import { Stars } from "@react-three/drei";
+import React, { useRef } from 'react'
+import { Canvas, useFrame } from 'react-three-fiber'
+import { Stars } from '@react-three/drei'
 ```
 
 In our `RotatingStars` function, let's create a ref and attach it to the `Stars` component.
 
 ```jsx
 const RotatingStars = () => {
-  const stars = useRef();
+  const stars = useRef()
 
-  return <Stars ref={stars} />;
-};
+  return <Stars ref={stars} />
+}
 ```
 
 Now we have a reference to the element we can update its rotation on each render of the render-loop using the `useFrame` hook.
 
 ```jsx
 const RotatingStars = () => {
-  const stars = useRef();
+  const stars = useRef()
 
   useFrame(() => {
-    stars.current.rotation.x = stars.current.rotation.y += 0.00015;
-  });
+    stars.current.rotation.x = stars.current.rotation.y += 0.00015
+  })
 
-  return <Stars ref={stars} />;
-};
+  return <Stars ref={stars} />
+}
 ```
 
 Here we've set the `x` rotation to be slightly offset from the `y` rotation - giving us the slow spinning effect.
@@ -156,31 +156,31 @@ You should now have something that looks like this:
 **Code:**
 
 ```jsx
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
-import { Stars } from "@react-three/drei";
+import React, { useRef } from 'react'
+import { Canvas, useFrame } from 'react-three-fiber'
+import { Stars } from '@react-three/drei'
 
 const Starfield = () => {
   const RotatingStars = () => {
-    const stars = useRef();
+    const stars = useRef()
 
     useFrame(() => {
-      stars.current.rotation.x = stars.current.rotation.y += 0.00015;
-    });
+      stars.current.rotation.x = stars.current.rotation.y += 0.00015
+    })
 
-    return <Stars ref={stars} />;
-  };
+    return <Stars ref={stars} />
+  }
 
   return (
-    <div className="stars">
+    <div className='stars'>
       <Canvas>
         <RotatingStars />
       </Canvas>
     </div>
-  );
-};
+  )
+}
 
-export default Starfield;
+export default Starfield
 ```
 
 **Demo:**
@@ -194,18 +194,18 @@ On the version on the homepage there is a button to allow a '3D orbit' type effe
 It's simply a matter of importing the component and wrapping it within the `Canvas` component.
 
 ```js
-import { Stars, OrbitControls } from "@react-three/drei";
+import { Stars, OrbitControls } from '@react-three/drei'
 ```
 
 ```js
 return (
-  <div className="stars">
+  <div className='stars'>
     <Canvas>
       <OrbitControls />
       <RotatingStars />
     </Canvas>
   </div>
-);
+)
 ```
 
 This gives us the orbit controls as shown in the demo below:

@@ -1,5 +1,5 @@
 import React from "react";
-import StarsCanvas from "../../components/Stars/Stars";
+import StarsCanvas from "../../parts/Stars/Stars";
 
 const StarsDemo1 = () => {
   return (
