@@ -1,11 +1,9 @@
 import React from "react";
-import Hero from "../components/Hero/Hero";
-import About from "../components/About/About";
-import Skills from "../components/Skills/Skills";
-import Technologies from "../components/Technologies/Technologies";
-// import Contact from "../components/Contact/Contact";
-import Meta from "../components/Meta/Meta";
-import Blog from "../components/BlogSection/BlogSection";
+import Hero from "../components/sections/Hero/Hero";
+import About from "../components/sections/About/About";
+import Technologies from "../components/sections/Technologies/Technologies";
+import Meta from "../components/parts/Meta/Meta";
+import Blog from "../components/sections/Blog/Blog";
 
 const App = () => {
   const meta = {

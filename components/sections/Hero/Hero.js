@@ -3,9 +3,9 @@ import { scroller } from 'react-scroll'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import dynamic from 'next/dynamic'
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation'
-import useTypewriter from '../../hooks/useTypewriter'
+import useTypewriter from '../../../hooks/useTypewriter'
 
-const Stars = dynamic(() => import('../Stars/Stars'), {
+const Stars = dynamic(() => import('../../parts/Stars/Stars'), {
   ssr: false
 })
 

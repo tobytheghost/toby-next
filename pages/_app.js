@@ -1,7 +1,5 @@
-import Container from "../components/Container/Container";
-
+import Container from "../components/parts/Container/Container";
 import "../styles/Main.scss";
-// import "github-markdown-css/github-markdown.css";
 
 function MyApp({ Component, pageProps }) {
   return (

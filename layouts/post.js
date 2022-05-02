@@ -1,10 +1,9 @@
 import { MDXProvider } from "@mdx-js/react";
-import { motion, AnimatePresence } from "framer-motion";
-
-import CodeBlock from "../components/CodeBlock/CodeBlock";
-import Progress from "../components/Progress/Progress";
+import { motion } from "framer-motion";
+import CodeBlock from "../components/parts/CodeBlock/CodeBlock";
+import Progress from "../components/parts/Progress/Progress";
+import Meta from "../components/parts/Meta/Meta";
 import { formatDate } from "../utils/helpers";
-import Meta from "../components/Meta/Meta";
 
 const components = {
   pre: (props) => <div {...props} />,
