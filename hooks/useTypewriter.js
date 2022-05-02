@@ -9,6 +9,7 @@ const useTypewriter = (typewriter, content) => {
     let partIndex = 0
 
     function typeText () {
+      if(!typewriter.current) return
       const text = content[textState].substring(0, partIndex + 1)
       typewriter.current.innerHTML = text
       partIndex++
@@ -20,6 +21,7 @@ const useTypewriter = (typewriter, content) => {
     }
 
     function deleteText () {
+      if(!typewriter.current) return
       const text = content[textState].substring(0, partIndex - 1)
       typewriter.current.innerHTML = text
       partIndex--
