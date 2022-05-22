@@ -1,12 +1,9 @@
 # Portfolio Site
 
+This is a [Next.js](https://nextjs.org/) project for my portfolio site, found here: 
 https://tobygates.co.uk/
 
-This is a [Next.js](https://nextjs.org/) project.
-
-## Getting Started
-
-First, run the development server:
+## How to run locally
 
 ```bash
 npm run dev
